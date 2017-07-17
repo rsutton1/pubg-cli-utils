@@ -12,6 +12,9 @@ def get_player_json(player):
     url = "https://pubgtracker.com/api/profile/pc/%s" % (player)
     headers = {'TRN-Api-Key': os.environ["PUBG_API_KEY"]}
     r = requests.get(url, headers=headers)
+
+    # The server returns a 500 if the player isn't found, so if we
+    # see a 500 this is the most likely problem.
     if r.status_code != 200:
         print("Player %s not found. Please enter a valid player." % (player))
         sys.exit(1)
