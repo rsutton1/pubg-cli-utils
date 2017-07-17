@@ -19,7 +19,7 @@ def get_player_json(player):
         sys.exit(1)
     return r.json()
 
-# parsePlayerStats
+# parse_player_stats
 #
 # This turns the json stats list into a convenient
 # dictionary with the stat name as the key.
@@ -30,7 +30,7 @@ def get_player_json(player):
 # output:
 #   a stats dictionary with the stat name as the key and
 #   the stat value as the value
-def parsePlayerStats(player_stats_raw):
+def parse_player_stats(player_stats_raw):
     player_stats = {}
     for stat in player_stats_raw:
         stat_name = stat["field"]
@@ -38,7 +38,7 @@ def parsePlayerStats(player_stats_raw):
         player_stats[stat_name] = stat_value
     return player_stats
 
-# getPlayerStats
+# get_player_stats
 #
 # This gets the dictionary of a player's stats given the match_type and
 # region.
@@ -50,11 +50,11 @@ def parsePlayerStats(player_stats_raw):
 #
 # output:
 #   A dictionary of the player's stats
-def getPlayerStats(player_json, match_type, region):
+def get_player_stats(player_json, match_type, region):
     for stats_meta in player_json["Stats"]:
         if stats_meta["Match"] == match_type and stats_meta["Region"] == region:
             player_stats_raw = stats_meta["Stats"]
-            return parsePlayerStats(player_stats_raw)
+            return parse_player_stats(player_stats_raw)
 
 # Pretty prints the result into columns and rows while filtering
 # out unwanted stats
@@ -82,6 +82,6 @@ all_stats = {}
 
 for player in args.players:
     player_json = get_player_json(player)
-    all_stats[player] = getPlayerStats(player_json, match_type, region)
+    all_stats[player] = get_player_stats(player_json, match_type, region)
 
 pretty_print_stats(all_stats, stats)
