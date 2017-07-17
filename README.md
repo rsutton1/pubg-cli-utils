@@ -23,7 +23,13 @@ this key [here](https://pubgtracker.com/site-api):
 export PUBG_API_KEY=your-api-key-here
 ```
 
-Now run the script:
+# Usage
+
+Run the script with an arbitrary amount of players:
 ```
-python main.py player1 player2
+$ python compare.py akustic heading SILPHTV
+Player        KillDeathRatio                WinRatio                  Rating
+SILPHTV                 4.52                   17.33                 2928.09
+heading                 1.67                    6.73                 2878.94
+akustic                 1.09                    0.83                 1753.09
 ```
