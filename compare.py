@@ -54,7 +54,8 @@ def getPlayerStats(player_json, match_type, region):
             player_stats_raw = stats_meta["Stats"]
             return parsePlayerStats(player_stats_raw)
 
-# Pretty prints the result into columns and rows
+# Pretty prints the result into columns and rows while filtering
+# out unwanted stats
 def pretty_print_stats(all_players, stats):
     print("Player\t", end='')
     for stat in stats:
