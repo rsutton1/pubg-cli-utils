@@ -12,7 +12,7 @@ Run the following commands to setup the environment:
 ```
 git clone git@github.com:rsutton1/pubg-cli-utils.git
 cd pubg-cli-utils
-mkvirtualenv pubg
+mkvirtualenv -p python3 pubg
 source pubg/bin/activate
 pip install -r requirements.txt
 ```
