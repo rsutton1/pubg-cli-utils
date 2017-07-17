@@ -1,7 +1,7 @@
 # pubg-cli-utils
 A CLI to the PUBG API
 
-# Install
+## Install
 This project was tested on Ubuntu 14.04.
 
 This project requires virtualenv, go
@@ -23,7 +23,7 @@ this key [here](https://pubgtracker.com/site-api):
 export PUBG_API_KEY=your-api-key-here
 ```
 
-# Usage
+## Usage
 
 Run the script with an arbitrary amount of players:
 ```
