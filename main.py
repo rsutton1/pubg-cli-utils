@@ -13,13 +13,6 @@ def get_player_json(player):
     r = requests.get(url, headers=headers)
     return r.json()
 
-# filter_dict
-#
-# This helper function removes all the keys from the dictionary
-# except for the keys passed into the function
-def filter_dict(dict_unfiltered, keys):
-    return { key : dict_unfiltered[key] for key in keys }
-
 # parsePlayerStats
 #
 # This turns the json stats list into a convenient
@@ -83,9 +76,9 @@ all_stats = {}
 
 for player in args.players:
     player_json = get_player_json(player)
-    player_stats_all = getPlayerStats(player_json, match_type, region)
-    player_stats_filtered = filter_dict(player_stats_all, stats)
-    all_stats[player] = player_stats_filtered
+    all_stats[player] = getPlayerStats(player_json, match_type, region)
+
+    # We do this to respect their 1 request/second.
     time.sleep(1)
 
 pretty_print_stats(all_stats, stats)
