@@ -50,6 +50,7 @@ def getPlayerStats(player_json, match_type, region):
             player_stats_raw = stats_meta["Stats"]
             return parsePlayerStats(player_stats_raw)
 
+# Pretty prints the result into columns and rows
 def pretty_print_stats(all_players, stats):
     print("Player\t", end='')
     for stat in stats:
@@ -76,7 +77,7 @@ for player in args.players:
     player_json = get_player_json(player)
     all_stats[player] = getPlayerStats(player_json, match_type, region)
 
-    # We do this to respect their 1 request/second.
+    # We do this to respect their request for 1 request/second.
     time.sleep(1)
 
 pretty_print_stats(all_stats, stats)
