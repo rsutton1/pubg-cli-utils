@@ -2,6 +2,7 @@ import requests
 import time
 import json
 import os
+import sys
 import argparse
 
 # get_player_json
@@ -11,6 +12,9 @@ def get_player_json(player):
     url = "https://pubgtracker.com/api/profile/pc/%s" % (player)
     headers = {'TRN-Api-Key': os.environ["PUBG_API_KEY"]}
     r = requests.get(url, headers=headers)
+    if r.status_code != 200:
+        print("Player %s not found. Please enter a valid player" % (player))
+        sys.exit(1)
     return r.json()
 
 # parsePlayerStats
