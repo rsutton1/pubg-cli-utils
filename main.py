@@ -34,18 +34,16 @@ def parsePlayerStats(player_stats_raw):
 
 # getPlayerStats
 #
-# This gets the json of a player's stats given the match_type and
+# This gets the dictionary of a player's stats given the match_type and
 # region.
 #
 # inputs:
-#   player_json: the json blob for the player
+#   player_json: the json stats for the player
 #   match_type: the type of match
-#     values: solo, duo, or squad
 #   region: the region for the stats
-#     values: na or agg
 #
 # output:
-#   A json blob of the player's stats
+#   A dictionary of the player's stats
 def getPlayerStats(player_json, match_type, region):
     for stats_meta in player_json["Stats"]:
         if stats_meta["Match"] == match_type and stats_meta["Region"] == region:
