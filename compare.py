@@ -13,7 +13,7 @@ def get_player_json(player):
     headers = {'TRN-Api-Key': os.environ["PUBG_API_KEY"]}
     r = requests.get(url, headers=headers)
     if r.status_code != 200:
-        print("Player %s not found. Please enter a valid player" % (player))
+        print("Player %s not found. Please enter a valid player." % (player))
         sys.exit(1)
     return r.json()
 
