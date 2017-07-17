@@ -1,5 +1,4 @@
 import requests
-import time
 import json
 import os
 import sys
@@ -84,8 +83,5 @@ all_stats = {}
 for player in args.players:
     player_json = get_player_json(player)
     all_stats[player] = getPlayerStats(player_json, match_type, region)
-
-    # We do this to respect their request for 1 request/second.
-    time.sleep(1)
 
 pretty_print_stats(all_stats, stats)
