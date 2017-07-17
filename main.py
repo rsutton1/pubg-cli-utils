@@ -59,6 +59,17 @@ def getPlayerStats(player_json, match_type, region):
             player_stats_raw = stats_meta["Stats"]
             return parsePlayerStats(player_stats_raw)
 
+def pretty_print_stats(all_players, stats):
+    print("Player\t", end='')
+    for stat in stats:
+        print("%20s\t" % (stat), end='')
+    print("")
+    for player, player_stats in all_players.items():
+        print("%s\t" % player, end='')
+        for stat in stats:
+            print("%20s\t" % player_stats[stat], end='')
+        print("")
+
 # Parse the arguments to get players to compare
 parser = argparse.ArgumentParser()
 parser.add_argument("players", nargs="+")
@@ -77,4 +88,4 @@ for player in args.players:
     all_stats[player] = player_stats_filtered
     time.sleep(1)
 
-print(all_stats)
+pretty_print_stats(all_stats, stats)
